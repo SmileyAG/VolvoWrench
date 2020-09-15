@@ -129,7 +129,7 @@ namespace VolvoWrench.Demo_Stuff.GoldSource
             // 
             // BXTTreeView
             // 
-            this.BXTTreeView.BackColor = System.Drawing.SystemColors.Desktop;
+            this.BXTTreeView.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BXTTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BXTTreeView.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.BXTTreeView.LineColor = System.Drawing.Color.White;
