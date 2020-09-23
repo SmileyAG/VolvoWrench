@@ -542,7 +542,8 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                         case Bxt.RuntimeDataType.SCRIPT_EXECUTION:
                             {
                                 ret +=("\t" + "Config execution: " + ((Bxt.ScriptExecution)t.Value).filename + " Frame: " + i + "\n");
-                                //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\extracted\\" + Path.GetRandomFileName() + ".cfg", ((Bxt.ScriptExecution)t.Value).contents);
+                                //Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\");
+                                //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\" + ((Bxt.ScriptExecution)t.Value).filename, ((Bxt.ScriptExecution)t.Value).contents);
                                 datanode.Nodes.Add(new TreeNode("Script: " + ((Bxt.ScriptExecution)t.Value).filename)
                                 {
                                     ForeColor = Color.LightSteelBlue,
@@ -603,10 +604,10 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 {
                                     ret +=("\t" + "Disallowed sk_ command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
                                 }
-								if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SKILL"))
-								{
-								    ret +=("\t" + "Disallowed skill command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
-								}
+                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SKILL"))
+                                {
+                                    ret +=("\t" + "Disallowed skill command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
+                                }
                                 if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("LOAD"))
                                 {
                                     ret +=("\t" + ((Bxt.CommandExecution)t.Value).command + "\n");
