@@ -181,7 +181,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_HUD_VISIBLE_LANDMARKS", "0"},
                 {"BXT_NOVIS", "0"},
                 {"BXT_SHOW_HIDDEN_ENTITIES", "0"},
-				{"BXT_SHOW_PICKUP_BBOX", "0"},
+                {"BXT_SHOW_PICKUP_BBOX", "0"},
                 {"BXT_SHOW_TRIGGERS", "0"},
                 {"BXT_SHOW_TRIGGERS_LEGACY", "0"},
                 {"BXT_WALLHACK", "0"},
