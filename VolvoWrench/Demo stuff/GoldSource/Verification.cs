@@ -591,7 +591,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 {
                                     ret +=("\t" + ((Bxt.CommandExecution)t.Value).command + "\n");
                                 }
-				                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CONNECT"))
+                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CONNECT"))
                                 {
                                     ret +=("\t" + "Disallowed connect command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
                                 }
