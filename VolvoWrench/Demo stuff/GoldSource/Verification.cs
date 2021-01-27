@@ -162,42 +162,225 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
         public string ParseBxtData(KeyValuePair<string, CrossParseResult> info)
         {
             string ret = "\n";
-            const string bxtVersion = "29290999b3607f61cee4b8e65c4faa90cff4afa0-CLEAN based on aug-1-2020";
+            const string bxtVersion = "c43feb6a678b3d4cf7dd1e38150777d07c9e3605-CLEAN based on jan-11-2021";
             var cvarRules = new Dictionary<string, string>()
             {
+                {"_BXT_BUNNYSPLIT_TIME_UPDATE_FREQUENCY", "41"},
+                {"_BXT_MIN_FRAMETIME", "0"},
+                {"_BXT_NOREFRESH", "0"},
+                {"_BXT_SAVE_RUNTIME_DATA_IN_DEMOS", "1"},
+                {"_BXT_TASLOG", "0"},
+                {"BGMBUFFER", "4096"},
+                {"BXT_AUTOPAUSE", "0"},
                 {"BXT_BHOPCAP", "0"},
                 {"BXT_COLLISION_DEPTH_MAP", "0"},
                 {"BXT_FADE_REMOVE", "0"},
                 {"BXT_HUD_DISTANCE", "0"},
+                {"BXT_HUD_ENTITIES", "0"},
                 {"BXT_HUD_ENTITY_HP", "0"},
                 {"BXT_HUD_ENTITY_INFO", "0"},
-                {"BXT_HUD_ENTITIES", "0"},
                 {"BXT_HUD_HEALTH", "0"},
-                {"BXT_HUD_ORIGIN", "0"},
-                {"BXT_HUD_SELFGAUSS","0"},
-                {"BXT_HUD_USEABLES", "0"},
                 {"BXT_HUD_NIHILANTH", "0"},
+                {"BXT_HUD_ORIGIN", "0"},
+                {"BXT_HUD_SELFGAUSS", "0"},
+                {"BXT_HUD_TAS_EDITOR_STATUS", "0"},
+                {"BXT_HUD_USEABLES", "0"},
                 {"BXT_HUD_VELOCITY", "0"},
                 {"BXT_HUD_VISIBLE_LANDMARKS", "0"},
+                {"BXT_INTERPROCESS_ENABLE", "0"},
                 {"BXT_NOVIS", "0"},
+                {"BXT_SHOW_CINE_MONSTERS", "0" },
+                {"BXT_SHOW_CUSTOM_TRIGGERS", "1"},
                 {"BXT_SHOW_HIDDEN_ENTITIES", "0"},
+                {"BXT_SHOW_NODES", "0"},
                 {"BXT_SHOW_PICKUP_BBOX", "0"},
+                {"BXT_SHOW_ROUTES", "0"},
+                {"BXT_SHOW_SOUNDS", "0"},
                 {"BXT_SHOW_TRIGGERS", "0"},
                 {"BXT_SHOW_TRIGGERS_LEGACY", "0"},
+                {"BXT_STOP_DEMO_ON_CHANGELEVEL", "0"},
+                {"BXT_TAS_EDITOR_SIMULATE_FOR_MS", "40"},
+                {"BXT_TAS_NOREFRESH_UNTIL_LAST_FRAMES", "0"},
+                {"BXT_TAS_PLAYBACK_SPEED", "1"},
+                {"BXT_TAS_WRITE_LOG", "0"},
+                {"BXT_TIMER_AUTOSTOP", "1"},
+                {"BXT_UNLOCK_CAMERA_DURING_PAUSE", "0"},
                 {"BXT_WALLHACK", "0"},
+                {"C_MAXDISTANCE", "200.0"},
+                {"C_MAXPITCH", "90.0"},
+                {"C_MAXYAW", "135.0"},
+                {"C_MINDISTANCE", "30.0"},
+                {"C_MINPITCH", "0.0"},
+                {"C_MINYAW", "-135.0"},
+                {"CAM_COMMAND", "0"},
+                {"CAM_CONTAIN", "0"},
+                {"CAM_IDEALDIST", "64"},
+                {"CAM_IDEALPITCH", "0"},
+                {"CAM_IDEALYAW", "90"},
+                {"CAM_SNAPTO", "0"},
                 {"CHASE_ACTIVE", "0"},
+                {"CHASE_BACK", "100"},
+                {"CHASE_RIGHT", "0"},
+                {"CHASE_UP", "16"},
                 {"CL_ANGLESPEEDKEY", "0.67"},
                 {"CL_BACKSPEED", "400"},
+                {"CL_CLOCKRESET", "0.1"},
+                {"CL_CMDBACKUP", "2"},
+                {"CL_FIXTIMERATE", "7.5"},
                 {"CL_FORWARDSPEED", "400"},
+                {"CL_GAITESTIMATION", "1"},
+                {"CL_GG", "0"},
+                {"CL_IDEALPITCHSCALE", "0.8"},
+                {"CL_LC", "1"},
+                {"CL_LW", "1"},
+                {"CL_MOVESPEEDKEY", "0.3"},
+                {"CL_NEEDINSTANCED", "0"},
+                {"CL_NOSMOOTH", "0"},
                 {"CL_PITCHSPEED", "225"},
+                {"CL_RESEND", "6.0"},
+                {"CL_SHOWERROR", "0"},
+                {"CL_SHOWEVENTS", "0"},
+                {"CL_SHOWMESSAGES", "0"},
+                {"CL_SHOWNET", "0"},
                 {"CL_SIDESPEED", "400"},
+                {"CL_SLIST", "10.0"},
+                {"CL_SMOOTHTIME", "0.1"},
+                {"CL_SOLID_PLAYERS", "1"},
                 {"CL_UPSPEED", "320"},
+                {"CL_VSMOOTHING", "0.05"},
+                {"CL_WATERDIST", "4"},
                 {"CL_YAWSPEED", "210"},
+                {"CLIENTPORT", "27005"},
+                {"COM_FILEWARNING", "0"},
+                {"CON_FASTMODE", "1"},
+                {"CON_NOTIFYTIME", "4"},
+                {"COOP", "0"},
+                {"D_SPRITESKIP", "0"},
+                {"DEATHMATCH", "0"},
+                {"DEV_OVERVIEW", "0"},
+                {"DIRECT", "0.9"},
+                {"DISPLAYSOUNDLIST", "0"},
+                {"EDGEFRICTION", "2"},
+                {"EX_EXTRAPMAX", "1.2"},
+                {"EX_INTERP", "0.1"},
+                {"FAKELAG", "0.0"},
+                {"FAKELOSS", "0.0"},
+                {"FS_LAZY_PRECACHE", "0"},
+                {"FS_PERF_WARNINGS", "0"},
+                {"FS_PRECACHE_TIMINGS", "0"},
+                {"FS_STARTUP_TIMINGS", "0"},
+                {"GL_AFFINEMODELS", "0"},
+                {"GL_ALPHAMIN", "0.25"},
+                {"GL_CLEAR", "0"},
+                {"GL_CULL", "1"},
+                {"GL_D3DFLIP", "1"},
+                {"GL_DITHER", "1"},
+                {"GL_FLIPMATRIX", "0"},
+                {"GL_FOG", "1"},
+                {"GL_KEEPTJUNCTIONS", "1"},
+                {"GL_LIGHTHOLES", "1"},
+                {"GL_MAX_SIZE", "512"},
                 {"GL_MONOLIGHTS", "0"},
+                {"GL_NOBIND", "0"},
+                {"GL_NOCOLORS", "0"},
+                {"GL_PALETTE_TEX", "1"},
+                {"GL_PICMIP", "0"},
+                {"GL_PLAYERMIP", "0"},
+                {"GL_REPORTTJUNCTIONS", "0"},
+                {"GL_ROUND_DOWN", "3"},
+                {"GL_SPRITEBLEND", "1"},
+                {"GL_WATERAMP", "0"},
+                {"GL_WIREFRAME", "0"},
+                {"GL_ZTRICK", "0"},
+                {"HISOUND", "1"},
                 {"HOST_FRAMERATE", "0"},
+                {"HOST_KILLTIME", "0"},
+                {"HOST_LIMITLOCAL", "0"},
+                {"HOST_PROFILE", "0"},
                 {"HOST_SPEEDS", "0"},
+                {"HOSTNAME", "HALF-LIFE"},
+                {"HOSTPORT", "0"},
+                {"HUD_CAPTUREMOUSE", "1"},
+                {"HUD_CLASSAUTOKILL", "1"},
+                {"HUD_DEATHNOTICE_TIME", "6"},
+                {"HUD_DRAWHISTORY_TIME", "5"},
+                {"HUD_SAYTEXT_TIME", "5"},
+                {"HUD_TAKESSHOTS", "0"},
+                {"IP", "LOCALHOST"},
+                {"IP_CLIENTPORT", "0"},
+                {"IP_HOSTPORT", "0"},
+                {"IPX_CLIENTPORT", "0"},
+                {"IPX_HOSTPORT", "0"},
+                {"JOYADVANCED", "0"},
+                {"JOYADVAXISR", "0"},
+                {"JOYADVAXISU", "0"},
+                {"JOYADVAXISV", "0"},
+                {"JOYADVAXISX", "0"},
+                {"JOYADVAXISY", "0"},
+                {"JOYADVAXISZ", "0"},
+                {"JOYFORWARDSENSITIVITY", "-1.0"},
+                {"JOYFORWARDTHRESHOLD", "0.15"},
+                {"JOYNAME", "JOYSTICK"},
+                {"JOYPITCHSENSITIVITY", "1.0"},
+                {"JOYPITCHTHRESHOLD", "0.15"},
+                {"JOYSIDESENSITIVITY", "-1.0"},
+                {"JOYSIDETHRESHOLD", "0.15"},
+                {"JOYSTICK", "0"},
+                {"JOYWWHACK1", "0.0"},
+                {"JOYWWHACK2", "0.0"},
+                {"JOYYAWSENSITIVITY", "-1.0"},
+                {"JOYYAWTHRESHOLD", "0.15"},
+                {"LAMBERT", "1.5"},
+                {"LOGSDIR", "LOGS"},
+                {"LOOKSPRING", "0.000000"},
+                {"LOOKSTRAFE", "0.000000"},
+                {"MAPCYCLEFILE", "MAPCYCLE.TXT"},
+                {"MAX_QUERIES_SEC", "3.0"},
+                {"MAX_QUERIES_SEC_GLOBAL", "30"},
+                {"MAX_QUERIES_WINDOW", "60"},
+                {"MOTDFILE", "MOTD.TXT"},
+                {"MP_ALLOWMONSTERS", "0"},
+                {"MP_CHATTIME", "10"},
+                {"MP_CONSISTENCY", "1"},
+                {"MP_DEFAULTTEAM", "0"},
+                {"MP_FALLDAMAGE", "0"},
+                {"MP_FLASHLIGHT", "0"},
+                {"MP_FOOTSTEPS", "1"},
+                {"MP_FORCERESPAWN", "1"},
+                {"MP_FRAGLIMIT", "0"},
+                {"MP_FRAGSLEFT", "0"},
+                {"MP_FRIENDLYFIRE", "0"},
+                {"MP_LOGECHO", "1"},
+                {"MP_LOGFILE", "1"},
+                {"MP_TEAMOVERRIDE", "1"},
+                {"MP_TEAMPLAY", "0"},
+                {"MP_TIMELEFT", "0"},
+                {"MP_TIMELIMIT", "0"},
+                {"MP_WEAPONSTAY", "0"},
+                {"MULTICASTPORT", "27025"},
+                {"NET_CHOKELOOP", "0"},
+                {"NET_DRAWSLIDER", "0"},
+                {"NET_LOG", "0"},
+                {"NET_SHOWDROP", "0"},
+                {"NET_SHOWPACKETS", "0"},
+                {"R_BMODELHIGHFRAC", "5.0"},
                 {"R_DRAWENTITIES", "1"},
+                {"R_DYNAMIC", "1"},
                 {"R_FULLBRIGHT", "0"},
+                {"R_NOREFRESH", "0"},
+                {"R_NOVIS", "0"},
+                {"R_SPEEDS", "0"},
+                {"S_SHOW", "0"},
+                {"S_SHOWTOSSED", "0"},
+                {"SCR_CENTERTIME", "2"},
+                {"SCR_CONNECTMSG", "0"},
+                {"SCR_CONNECTMSG1", "0"},
+                {"SCR_CONNECTMSG2", "0"},
+                {"SCR_CONSPEED", "600"},
+                {"SCR_OFSX", "0"},
+                {"SCR_OFSY", "0"},
+                {"SCR_OFSZ", "0"},
+                {"SCR_PRINTSPEED", "8"},
                 {"SK_12MM_BULLET1", "8"},
                 {"SK_12MM_BULLET2", "10"},
                 {"SK_12MM_BULLET3", "10"},
@@ -449,13 +632,67 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"SK_ZOMBIE_HEALTH3", "100"},
                 {"SKILL", "1"},
                 {"SND_SHOW", "0"},
+                {"SV_ACCELERATE", "10"},
                 {"SV_AIRACCELERATE", "10"},
+                {"SV_AIRMOVE", "1"},
+                {"SV_BOUNCE", "1"},
                 {"SV_CHEATS", "0"},
+                {"SV_CLIENTTRACE", "1"},
+                {"SV_CLIPMODE", "0"},
+                {"SV_ENABLEOLDQUERIES", "0"},
+                {"SV_FAILURETIME", "0.5"},
+                {"SV_FILETRANSFERCOMPRESSION", "1"},
+                {"SV_FILTERBAN", "1"},
                 {"SV_FRICTION", "4"},
                 {"SV_GRAVITY", "800"},
+                {"SV_INSTANCEDBASELINE", "1"},
+                {"SV_LAN", "1"},
+                {"SV_LAN_RATE", "20000.0"},
+                {"SV_LOG_ONEFILE", "0"},
+                {"SV_LOG_SINGLEPLAYER", "0"},
+                {"SV_LOGBANS", "0"},
+                {"SV_LOGBLOCKS", "0"},
+                {"SV_LOGRELAY", "0"},
+                {"SV_MAXRATE", "0"},
+                {"SV_MAXSPEED", "320"},
+                {"SV_MAXUNLAG", "0.5"},
+                {"SV_MAXUPDATERATE", "30.0"},
+                {"SV_MAXVELOCITY", "2000"},
+                {"SV_MINRATE", "0"},
+                {"SV_MINUPDATERATE", "10.0"},
+                {"SV_NEWUNIT", "0"},
+                {"SV_OUTOFDATETIME", "1800"},
+                {"SV_PROXIES", "1"},
+                {"SV_RCON_BANPENALTY", "0"},
+                {"SV_RCON_MAXFAILURES", "10"},
+                {"SV_RCON_MINFAILURES", "5"},
+                {"SV_RCON_MINFAILURETIME", "30"},
+                {"SV_REGION", "-1"},
+                {"SV_SEND_LOGOS", "1"},
+                {"SV_SEND_RESOURCES", "1"},
+                {"SV_SPECTATORMAXSPEED", "500"},
+                {"SV_STATS", "1"},
+                {"SV_STEPSIZE", "18"},
+                {"SV_STOPSPEED", "100"},
+                {"SV_TIMEOUT", "60"},
+                {"SV_UNLAG", "1"},
+                {"SV_UNLAGPUSH", "0.0"},
+                {"SV_UNLAGSAMPLES", "1"},
+                {"SV_UPLOADMAX", "0.5"},
+                {"SV_VISIBLEMAXPLAYERS", "-1"},
+                {"SV_VOICECODEC", "VOICE_MILES"},
+                {"SV_VOICEENABLE", "1"},
+                {"SV_VOICEQUALITY", "3"},
                 {"SV_WATERACCELERATE", "10"},
+                {"SV_WATERAMP", "0"},
                 {"SV_WATERFRICTION", "1"},
-                {"S_SHOW", "0"}
+                {"SYS_TICRATE", "100.0"},
+                {"TFC_NEWMODELS", "1"},
+                {"V_CENTERMOVE", "0.15"},
+                {"V_CENTERSPEED", "500"},
+                {"VGUI_EMULATEMOUSE", "0"},
+                {"VID_D3D", "0"},
+                {"WATERROOM_TYPE", "14"}
             };
             var demonode = new TreeNode(Path.GetFileName(info.Key)) { ForeColor = Color.LightCoral };
             for (int i = 0; i < info.Value.GsDemoInfo.IncludedBXtData.Count; i++)
@@ -468,7 +705,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                     {
                         case Bxt.RuntimeDataType.VERSION_INFO:
                             {
-                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
+                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (January 11 2021)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
                                 ret +=("\t" + "Game Version: " + ((Bxt.VersionInfo)t.Value).build_number + "\n");
                                 datanode.Nodes.Add(new TreeNode("Version info")
                                 {
@@ -523,23 +760,11 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                             }
                         case Bxt.RuntimeDataType.ALIAS_EXPANSION:
                             {
-                                if (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+LEFT"))
-                                {
-                                    ret +=("\t" + "Movement command in alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + ((Bxt.AliasExpansion)t.Value).command + " Frame: " + i + "\n");
-                                }
-                                if (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+RIGHT"))
-                                {
-                                    ret +=("\t" + "Movement command in alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + ((Bxt.AliasExpansion)t.Value).command + " Frame: " + i + "\n");
-                                }
-                                if (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+MOVE"))
-                                {
-                                    ret +=("\t" + "Movement command in alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + ((Bxt.AliasExpansion)t.Value).command + " Frame: " + i + "\n");
-                                }
-                                if (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+FORWARD"))
-                                {
-                                    ret +=("\t" + "Movement command in alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + ((Bxt.AliasExpansion)t.Value).command + " Frame: " + i + "\n");
-                                }
-                                if (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+BACK"))
+                                if ((((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+LEFT"))
+                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+RIGHT"))
+                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+MOVE"))
+                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+FORWARD"))
+                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+BACK")))
                                 {
                                     ret +=("\t" + "Movement command in alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + ((Bxt.AliasExpansion)t.Value).command + " Frame: " + i + "\n");
                                 }
@@ -563,7 +788,18 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                             }
                         case Bxt.RuntimeDataType.COMMAND_EXECUTION:
                             {
-                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("BXT")) ^ ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("APPEND")) | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DUCKTAP")) | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AUTOJUMP")) | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JUMPBUG"))))
+                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("BXT"))
+                                ^ ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("APPEND"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_TIMER"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_COLOR"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_JUMPSPEED"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_SPEEDOMETER"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_VIEWANGLES"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_INCORRECT_FPS"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_AUTOSAVE"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DUCKTAP"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AUTOJUMP"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JUMPBUG"))))
                                 {
                                     ret +=("\t" + "Disallowed bxt command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
                                 }
@@ -571,29 +807,43 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 {
                                     ForeColor = Color.LightGreen
                                 });
-                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HOST_"))
-                                {
-                                    ret +=("\t" + "Disallowed host_ command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
-                                }
-                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SV_"))
-                                {
-                                    ret +=("\t" + "Disallowed sv_ command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
-                                }
-                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SK_"))
-                                {
-                                    ret +=("\t" + "Disallowed sk_ command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
-                                }
-                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SKILL"))
-                                {
-                                    ret +=("\t" + "Disallowed skill command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
-                                }
                                 if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("LOAD"))
                                 {
-                                    ret +=("\t" + ((Bxt.CommandExecution)t.Value).command + "\n");
+                                    ret += ("\t" + ((Bxt.CommandExecution)t.Value).command + "\n");
                                 }
-                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CONNECT"))
+                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HOST_"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SK_"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CHASE"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SKILL"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CONNECT"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DELTA"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("EDGEFRICTION"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("FS_"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("MAPCHANGECFGFILE"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("NOTARGET"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PLAYDEMO"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("S_SHOW"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SPEC_POS"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("THIRDPERSON"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SCR_"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("C_"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CAM"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JOY")))
                                 {
-                                    ret +=("\t" + "Disallowed connect command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
+                                    ret += ("\t" + "Disallowed: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
+                                }
+                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SV_") ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AIM"))
+                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CL_")
+                                   ^ (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("BOB")
+                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SHOWFPS")
+                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PITCHDOWN")
+                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PITCHUP")))
+                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("MP_"))
+                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("R_"))
+                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("GL_") ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("TEXTUREMODE"))
+                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("STAT")))
+                                {
+                                    ret += ("\t" + "Probably disallowed ¯\\_(ツ)_/¯: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
                                 }
                                 break;
                             }
