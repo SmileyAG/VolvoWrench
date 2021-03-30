@@ -72,7 +72,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 
 			public override void Read(BinaryReader br)
 			{
-				command = new string(br.ReadChars(br.ReadInt32()));
+				command = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
 			}
 		}
 
@@ -84,8 +84,8 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 
 			public override void Read(BinaryReader br)
 			{
-				name = new string(br.ReadChars(br.ReadInt32()));
-				command = new string(br.ReadChars(br.ReadInt32()));
+				name = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+				command = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
 			}
 		}
 
@@ -96,8 +96,8 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 
 			public override void Read(BinaryReader br)
 			{
-				filename = new string(br.ReadChars(br.ReadInt32()));
-				contents = new string(br.ReadChars(br.ReadInt32()));
+				filename = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+				contents = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
 			}
 		}
 
@@ -108,7 +108,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 
 			public override void Read(BinaryReader br)
 			{
-				command = new string(br.ReadChars(br.ReadInt32()));
+				command = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
 			}
 		}
 
@@ -139,7 +139,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			{
 				corner_min = new Point3D(br.ReadSingle(),br.ReadSingle(),br.ReadSingle());
 				corner_max = new Point3D(br.ReadSingle(),br.ReadSingle(),br.ReadSingle());
-				command = new string(br.ReadChars(br.ReadInt32()));
+				command = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
 			}
 		}
 
