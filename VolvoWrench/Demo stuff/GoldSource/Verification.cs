@@ -896,6 +896,14 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 });
                                 break;
                             }
+                        case Bxt.RuntimeDataType.EDICTS:
+                            {
+                                if (((Bxt.Edicts)t.Value).edicts > 900)
+                                    ret += ("\t" + "Max edicts value is higher than 900: " + ((Bxt.Edicts)t.Value).edicts + "\n");
+
+                                datanode.Nodes.Add(new TreeNode("Max edicts: " + ((Bxt.Edicts)t.Value).edicts) { ForeColor = Color.Violet });
+                                break;
+                            }
                         default:
                             {
                                 datanode.Nodes.Add(new TreeNode("Invalid bxt data!") { ForeColor = Color.Red });
