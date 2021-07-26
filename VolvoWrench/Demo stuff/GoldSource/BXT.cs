@@ -26,6 +26,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			GAME_END_MARKER,
 			LOADED_MODULES,
 			CUSTOM_TRIGGER_COMMAND,
+			EDICTS,
 		}
 
 		[Serializable]
@@ -166,6 +167,17 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 					var ss = new string(br.ReadChars(ssl));
 					CVars.Add(new KeyValuePair<string, string>(fs,ss));
 				}
+			}
+		}
+
+		[Serializable]
+		public class Edicts : BXTData
+		{
+			public int edicts;
+
+			public override void Read(BinaryReader br)
+			{
+				edicts = br.ReadInt32();
 			}
 		}
 

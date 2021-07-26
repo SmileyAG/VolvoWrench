@@ -650,6 +650,11 @@ namespace VolvoWrench.Demo_Stuff.GoldSource
 								ctc.Read(br);
 								res.Objects.Add(new KeyValuePair<Bxt.RuntimeDataType, Bxt.BXTData>(Bxt.RuntimeDataType.CUSTOM_TRIGGER_COMMAND, ctc));
 								break;
+							case Bxt.RuntimeDataType.EDICTS:
+								var ed = new Bxt.Edicts();
+								ed.Read(br);
+								res.Objects.Add(new KeyValuePair<Bxt.RuntimeDataType, Bxt.BXTData>(Bxt.RuntimeDataType.EDICTS, ed));
+								break;
 							default:
 								throw new Exception("Invalid bxt data type!");
 						}
