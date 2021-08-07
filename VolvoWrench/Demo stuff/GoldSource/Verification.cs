@@ -162,7 +162,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
         public string ParseBxtData(KeyValuePair<string, CrossParseResult> info)
         {
             string ret = "\n";
-            const string bxtVersion = "c43feb6a678b3d4cf7dd1e38150777d07c9e3605-CLEAN based on jan-11-2021";
+            const string bxtVersion = "6f33f0ecf9a9d9cdf830e62590171f0bbdefc1f3-CLEAN based on aug-7-2021";
             var cvarRules = new Dictionary<string, string>()
             {
                 {"_BXT_BUNNYSPLIT_TIME_UPDATE_FREQUENCY", "41"},
@@ -708,7 +708,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                     {
                         case Bxt.RuntimeDataType.VERSION_INFO:
                             {
-                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (January 11 2021)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
+                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (August 7th 2021)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
                                 ret +=("\t" + "Game Version: " + ((Bxt.VersionInfo)t.Value).build_number + ", Game Directory: " + info.Value.GsDemoInfo.Header.GameDir + "\n");
                                 datanode.Nodes.Add(new TreeNode("Version info")
                                 {
