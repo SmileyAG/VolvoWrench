@@ -214,7 +214,7 @@ namespace VolvoWrench.Demo_Stuff
                     {
                         new Tuple<string,string>($"Analyzed GoldSource engine demo file ({demo.GsDemoInfo.Header.GameDir}):",""),
                         new Tuple<string,string>($"Demo protocol",$"{demo.GsDemoInfo.Header.DemoProtocol}"),
-                        new Tuple<string,string>($"Net protocol",$"{demo.GsDemoInfo.Header.DemoProtocol}"),
+                        new Tuple<string,string>($"Net protocol",$"{demo.GsDemoInfo.Header.NetProtocol}"),
                         new Tuple<string,string>($"Directory Offset",$"{demo.GsDemoInfo.Header.DirectoryOffset}"),
                         new Tuple<string,string>($"MapCRC",$"{demo.GsDemoInfo.Header.MapCrc}"),
                         new Tuple<string,string>($"Map name",$"{demo.GsDemoInfo.Header.MapName}"),
