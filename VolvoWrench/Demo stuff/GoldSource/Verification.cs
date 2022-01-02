@@ -837,7 +837,9 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_SPEEDOMETER"))
                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_VIEWANGLES"))
                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_INCORRECT_FPS"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_AUTOSAVE"))))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_AUTOSAVE"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CROSS"))
+                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("BXT_VIEWMODEL"))))
                                 {
                                     ret +=("\t" + "Disallowed BXT command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
                                 }
