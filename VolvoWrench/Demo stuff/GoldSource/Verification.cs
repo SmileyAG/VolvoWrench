@@ -807,7 +807,9 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_AUTOSAVE"))
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DUCKTAP"))
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AUTOJUMP"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JUMPBUG"))))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JUMPBUG"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CROSS"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("BXT_VIEWMODEL"))))
                                 {
                                     ret +=("\t" + "Disallowed bxt command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
                                 }
