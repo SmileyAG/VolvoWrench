@@ -29,7 +29,8 @@ namespace VolvoWrench.Demo_stuff.GoldSource
         {
             for (var index = 0; index < info.DirectoryEntries.Count; index++)
             {
-                var entrynode = new TreeNode("Directory entry [" + (index+1) + "] - " + info.DirectoryEntries[index].FrameCount);
+                var entrynode = new TreeNode("Directory entry [" + (index+1) + "] - " + info.DirectoryEntries[index].Description +
+                    ", Frame Count: " + info.DirectoryEntries[index].FrameCount);
                 entrynode.ForeColor = Color.Chartreuse;
                 foreach (var frame in info.DirectoryEntries[index].Frames)
                 {
