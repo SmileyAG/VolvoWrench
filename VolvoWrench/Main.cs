@@ -682,6 +682,11 @@ namespace VolvoWrench
         /// <param name="e"></param>
         private void frameViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (CurrentDemoFile == null)
+            {
+                MessageBox.Show(@"Open a demo file first!", @"Error!", MessageBoxButtons.OK);
+                return;
+            }
             if (CurrentDemoFile.Type == Parseresult.GoldSource)
                 using (var fw = new frmFrameView(CurrentDemoFile.GsDemoInfo))
                     fw.ShowDialog();
