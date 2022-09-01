@@ -752,7 +752,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                     ForeColor = Color.LightBlue
                                 };
                                 cvarnode.Nodes.AddRange(
-                                    ((Bxt.CVarValues)t.Value).CVars.Select(
+                                    ((Bxt.CVarValues)t.Value).CVars.OrderBy(x => x.Key).Select(
                                         x => new TreeNode(x.Key + " " + x.Value) { ForeColor = Color.LightBlue }).ToArray());
                                 datanode.Nodes.Add(cvarnode);
                                 break;
