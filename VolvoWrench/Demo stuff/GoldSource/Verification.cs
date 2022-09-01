@@ -179,9 +179,13 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_DISABLE_HUD", "0"},
                 {"BXT_DISABLE_VGUI", "0"},
                 {"BXT_FADE_REMOVE", "0"},
+                {"BXT_FIRE_ON_MM_COMMAND", "" },
+                {"BXT_FIRE_ON_MM_TARGETNAME", "" },
+                {"BXT_FORCE_CLEAR", "0" },
                 {"BXT_FORCE_FOV", "0"},
                 {"BXT_FORCE_DUCK", "0"},
                 {"BXT_FORCE_ZMAX", "0"},
+                {"BXT_FORCE_JUMPLESS", "0" },
                 {"BXT_HUD_ARMOR", "0"},
                 {"BXT_HUD_GONARCH", "0"},
                 {"BXT_HUD_QUICKGAUSS", "0"},
@@ -194,13 +198,19 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_HUD_ORIGIN", "0"},
                 {"BXT_HUD_SCALE", "0"},
                 {"BXT_HUD_SELFGAUSS", "0"},
+                {"BXT_HUD_STAMINA", "0" },
                 {"BXT_HUD_TAS_EDITOR_STATUS", "0"},
                 {"BXT_HUD_USEABLES", "0"},
                 {"BXT_HUD_VELOCITY", "0"},
                 {"BXT_HUD_VISIBLE_LANDMARKS", "0"},
+                {"BXT_HUD_WATERLEVEL", "0" },
                 {"BXT_INTERPROCESS_ENABLE", "0"},
                 {"BXT_NOVIS", "0"},
+                {"BXT_REMOVE_FPS_LIMIT", "0" },
+                {"BXT_RENDER_FAR_ENTITIES", "0" },
                 {"BXT_SHAKE_REMOVE", "0"},
+                {"BXT_SHOW_BULLETS", "0"},
+                {"BXT_SHOW_BULLETS_ENEMY", "0"},
                 {"BXT_SHOW_CINE_MONSTERS", "0" },
                 {"BXT_SHOW_CUSTOM_TRIGGERS", "1"},
                 {"BXT_SHOW_DISPLACER_EARTH_TARGETS", "0"},
@@ -804,6 +814,8 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_SPEEDOMETER"))
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_VIEWANGLES"))
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_INCORRECT_FPS"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_GAME"))
+                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_NIGHTVISION_SPRITE"))
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_AUTOSAVE"))
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DUCKTAP"))
                                 | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AUTOJUMP"))
@@ -842,15 +854,22 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 {
                                     ret += ("\t" + "Disallowed: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
                                 }
-                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SV_") ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AIM"))
+                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SV_")
+                                   ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AIM"))
+
                                    | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CL_")
                                    ^ (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("BOB")
                                    | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SHOWFPS")
+                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("RIGHTHAND")
                                    | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PITCHDOWN")
                                    | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PITCHUP")))
+
                                    | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("MP_"))
                                    | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("R_"))
-                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("GL_") ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("TEXTUREMODE"))
+
+                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("GL_")
+                                   ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("TEXTUREMODE"))
+
                                    | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("STAT")))
                                 {
                                     ret += ("\t" + "Probably disallowed ¯\\_(ツ)_/¯: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
