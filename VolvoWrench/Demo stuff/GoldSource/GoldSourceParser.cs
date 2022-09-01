@@ -655,7 +655,12 @@ namespace VolvoWrench.Demo_Stuff.GoldSource
 								ed.Read(br);
 								res.Objects.Add(new KeyValuePair<Bxt.RuntimeDataType, Bxt.BXTData>(Bxt.RuntimeDataType.EDICTS, ed));
 								break;
-							default:
+							case Bxt.RuntimeDataType.PLAYERHEALTH:
+								var plhealth = new Bxt.PlayerHealth();
+								plhealth.Read(br);
+                                res.Objects.Add(new KeyValuePair<Bxt.RuntimeDataType, Bxt.BXTData>(Bxt.RuntimeDataType.PLAYERHEALTH, plhealth));
+								break;
+                            default:
 								throw new Exception("Invalid bxt data type!");
 						}
 					}   

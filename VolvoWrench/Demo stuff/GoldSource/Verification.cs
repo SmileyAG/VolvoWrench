@@ -889,6 +889,11 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 datanode.Nodes.Add(new TreeNode("Max edicts: " + ((Bxt.Edicts)t.Value).edicts) { ForeColor = Color.Violet });
                                 break;
                             }
+                        case Bxt.RuntimeDataType.PLAYERHEALTH:
+                            {
+                                datanode.Nodes.Add(new TreeNode("Player health: " + ((Bxt.PlayerHealth)t.Value).playerhealth) { ForeColor = Color.LightSalmon });
+                                break;
+                            }
                         default:
                             {
                                 datanode.Nodes.Add(new TreeNode("Invalid bxt data!") { ForeColor = Color.Red });
