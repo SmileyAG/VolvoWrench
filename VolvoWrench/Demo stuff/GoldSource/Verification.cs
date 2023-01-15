@@ -942,6 +942,17 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                 datanode.Nodes.Add(new TreeNode("Player health: " + ((Bxt.PlayerHealth)t.Value).playerhealth) { ForeColor = Color.LightSalmon });
                                 break;
                             }
+                        case Bxt.RuntimeDataType.SPLIT_MARKER:
+                            {
+                                var split = (Bxt.SplitMarker)t.Value;
+                                ret +=("\t" + $"Split trigger X1:{split.corner_max.X} Y1:{split.corner_max.Y} Z1:{split.corner_max.Z} X2:{split.corner_min.X} Y2:{split.corner_min.Y} Z2:{split.corner_min.Z}" + " Frame: " + i + "\n");
+                                datanode.Nodes.Add(new TreeNode($"Split trigger X1:{split.corner_max.X} Y1:{split.corner_max.Y} Z1:{split.corner_max.Z} X2:{split.corner_min.X} Y2:{split.corner_min.Y} Z2:{split.corner_min.Z}")
+                                {
+                                    ForeColor = Color.Orange,
+                                    Nodes = { new TreeNode("Name: " + split.name + " | Map name: " + split.map_name) { ForeColor = Color.Orange } }
+                                });
+                                break;
+                            }
                         default:
                             {
                                 datanode.Nodes.Add(new TreeNode("Invalid bxt data!") { ForeColor = Color.Red });
