@@ -28,6 +28,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			CUSTOM_TRIGGER_COMMAND,
 			EDICTS,
 			PLAYERHEALTH,
+			SPLIT_MARKER,
 		}
 
 		[Serializable]
@@ -190,6 +191,23 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			public override void Read(BinaryReader br)
 			{
 				playerhealth = br.ReadInt32();
+			}
+		}
+
+		[Serializable]
+		public class SplitMarker : BXTData
+		{
+			public Point3D corner_min;
+			public Point3D corner_max;
+			public string name;
+			public string map_name;
+
+			public override void Read(BinaryReader br)
+			{
+				corner_min = new Point3D(br.ReadSingle(),br.ReadSingle(),br.ReadSingle());
+				corner_max = new Point3D(br.ReadSingle(),br.ReadSingle(),br.ReadSingle());
+				name = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+				map_name = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
 			}
 		}
 
