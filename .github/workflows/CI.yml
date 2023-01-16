@@ -23,7 +23,7 @@ jobs:
       run: nuget restore
     - uses: microsoft/setup-msbuild@v1
     - name: Build
-      run: msbuild /m /nologo /t:Build /p:Configuration=Release /p:AllowedReferenceRelatedFileExtensions=none /p:DefineConstants="NOVERIFY" VolvoWrench.sln
+      run: msbuild /m /nologo /t:Build /p:Configuration=Release /p:AllowedReferenceRelatedFileExtensions=none VolvoWrench.sln
     - name: Prepare artifacts
       run: rm VolvoWrench\bin\Release\* -Include *.config, *.pdb, *.xml
     - uses: actions/upload-artifact@v2
