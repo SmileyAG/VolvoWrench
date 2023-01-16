@@ -1360,9 +1360,9 @@ namespace VolvoWrench.Demo_Stuff.GoldSource
 											nf.UCmd.ImpactPosition.X = br.ReadSingle();
 											nf.UCmd.ImpactPosition.Y = br.ReadSingle();
 											nf.UCmd.ImpactPosition.Z = br.ReadSingle();
-											#if COF_BUILD
-											br.ReadInt32(); // donator check?
-											#endif
+											if (String.Compare(Environment.GetEnvironmentVariable("COF"), "1") == 0) {
+												br.ReadInt32(); // donator check?
+											}
 
 											nf.MVars.Gravity = br.ReadSingle();
 											if(nf.MVars.Gravity != 800)
