@@ -162,7 +162,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
         public string ParseBxtData(KeyValuePair<string, CrossParseResult> info)
         {
             string ret = "\n";
-            const string bxtVersion = "72c955a3ba7fc04760c5266ffd6940f459017a99-CLEAN based on aug-31-2022";
+            const string bxtVersion = "b52e3c84b9bc9b27c7db78d62eb11971ca37f54c-CLEAN based on jan-16-2023";
             var cvarRules = new Dictionary<string, string>()
             {
                 {"_BXT_BUNNYSPLIT_TIME_UPDATE_FREQUENCY", "41"},
@@ -175,19 +175,25 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_AUTOJUMP_PREDICTION", "0"},
                 {"BXT_AUTOPAUSE", "0"},
                 {"BXT_BHOPCAP", "0"},
-                {"BXT_CLEAR_GREEN", "0"},
                 {"BXT_COLLISION_DEPTH_MAP", "0"},
+                {"BXT_DISABLE_BRUSH_ENTITIES", "0" },
                 {"BXT_DISABLE_CHANGELEVEL", "0"},
                 {"BXT_DISABLE_HUD", "0"},
+                {"BXT_DISABLE_PARTICLES", "0"},
+                {"BXT_DISABLE_PLAYER_CORPSES", "0"},
+                {"BXT_DISABLE_SPRITE_ENTITIES", "0"},
+                {"BXT_DISABLE_STUDIO_ENTITIES", "0"},
                 {"BXT_DISABLE_VGUI", "0"},
+                {"BXT_DISABLE_WORLD", "0"},
                 {"BXT_FADE_REMOVE", "0"},
                 {"BXT_FIRE_ON_MM_COMMAND", "" },
                 {"BXT_FIRE_ON_MM_TARGETNAME", "" },
-                {"BXT_FORCE_CLEAR", "0" },
+                {"BXT_FIRE_ON_STUCK", "" },
                 {"BXT_FORCE_FOV", "0"},
                 {"BXT_FORCE_DUCK", "0"},
                 {"BXT_FORCE_ZMAX", "0"},
                 {"BXT_FORCE_JUMPLESS", "0" },
+                {"BXT_HIDE_OTHER_PLAYERS", "0" },
                 {"BXT_HUD_ARMOR", "0"},
                 {"BXT_HUD_GONARCH", "0"},
                 {"BXT_HUD_QUICKGAUSS", "0"},
@@ -210,6 +216,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_NOVIS", "0"},
                 {"BXT_REMOVE_FPS_LIMIT", "0" },
                 {"BXT_RENDER_FAR_ENTITIES", "0" },
+                {"BXT_REMOVE_PUNCHANGLES", "0" },
                 {"BXT_SHAKE_REMOVE", "0"},
                 {"BXT_SHOW_BULLETS", "0" },
                 {"BXT_SHOW_BULLETS_ENEMY", "0" },
@@ -218,7 +225,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_SHOW_DISPLACER_EARTH_TARGETS", "0"},
                 {"BXT_SHOW_HIDDEN_ENTITIES", "0"},
                 {"BXT_SHOW_HIDDEN_ENTITIES_CLIENTSIDE", "0"},
-                {"BXT_SHOW_ONLY_VIEWMODEL", "0"},
+                {"BXT_SHOW_ONLY_PLAYERS", "0"},
                 {"BXT_SHOW_PLAYER_IN_HLTV", "0"},
                 {"BXT_SKYBOX_REMOVE", "0"},
                 {"BXT_SHOW_NODES", "0"},
@@ -728,7 +735,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                     {
                         case Bxt.RuntimeDataType.VERSION_INFO:
                             {
-                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (August 31st 2022)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
+                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (January 16th 2023)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
                                 ret +=("\t" + "Game Version: " + ((Bxt.VersionInfo)t.Value).build_number + ", Game Directory: " + info.Value.GsDemoInfo.Header.GameDir + "\n");
                                 datanode.Nodes.Add(new TreeNode("Version info")
                                 {
