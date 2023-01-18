@@ -1360,6 +1360,11 @@ namespace VolvoWrench.Demo_Stuff.GoldSource
 											nf.UCmd.ImpactPosition.X = br.ReadSingle();
 											nf.UCmd.ImpactPosition.Y = br.ReadSingle();
 											nf.UCmd.ImpactPosition.Z = br.ReadSingle();
+											// Cry of Fear: is_donator
+											if (String.Compare(Environment.GetEnvironmentVariable("COF"), "1") == 0)
+											{
+												br.ReadInt32();
+											}
 
 											nf.MVars.Gravity = br.ReadSingle();
 											if(nf.MVars.Gravity != 800)
