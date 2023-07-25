@@ -10,7 +10,8 @@ on:
       - .gitignore
       - README.md
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 0 1 * *' # Monthly
 jobs:
   build:
     runs-on: windows-latest
