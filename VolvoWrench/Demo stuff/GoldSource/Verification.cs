@@ -239,6 +239,8 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_SHOW_SPLITS", "0"},
                 {"BXT_SHOW_TRIGGERS", "0"},
                 {"BXT_SHOW_TRIGGERS_LEGACY", "0"},
+                {"BXT_SPLITS_END_ON_LAST_SPLIT", "0" },
+                {"BXT_SPLITS_START_TIMER_ON_FIRST_SPLIT", "0" },
                 {"BXT_STOP_DEMO_ON_CHANGELEVEL", "0"},
                 {"BXT_TAS_EDITOR_CAMERA_EDITOR", "0"},
                 {"BXT_TAS_EDITOR_SIMULATE_FOR_MS", "40"},
