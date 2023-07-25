@@ -162,7 +162,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
         public string ParseBxtData(KeyValuePair<string, CrossParseResult> info)
         {
             string ret = "\n";
-            const string bxtVersion = "b52e3c84b9bc9b27c7db78d62eb11971ca37f54c-CLEAN based on jan-16-2023";
+            const string bxtVersion = "abf3d6c50f7b3dfcf972c57fba555278fdc1653a-CLEAN based on jul-23-2023";
             var cvarRules = new Dictionary<string, string>()
             {
                 {"_BXT_BUNNYSPLIT_TIME_UPDATE_FREQUENCY", "41"},
@@ -236,6 +236,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_SHOW_MONSTER_BBOX", "0"},
                 {"BXT_SHOW_ROUTES", "0"},
                 {"BXT_SHOW_SOUNDS", "0"},
+                {"BXT_SHOW_SPLITS", "0"},
                 {"BXT_SHOW_TRIGGERS", "0"},
                 {"BXT_SHOW_TRIGGERS_LEGACY", "0"},
                 {"BXT_STOP_DEMO_ON_CHANGELEVEL", "0"},
@@ -398,7 +399,6 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"NET_SHOWPACKETS", "0"},
                 {"R_BMODELHIGHFRAC", "5.0"},
                 {"R_DRAWENTITIES", "1"},
-                {"R_DYNAMIC", "1"},
                 {"R_FULLBRIGHT", "0"},
                 {"R_NOREFRESH", "0"},
                 {"R_NOVIS", "0"},
@@ -739,7 +739,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                     {
                         case Bxt.RuntimeDataType.VERSION_INFO:
                             {
-                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (January 16th 2023)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
+                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (July 23rd 2023)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
                                 ret +=("\t" + "Game Version: " + ((Bxt.VersionInfo)t.Value).build_number + ", Game Directory: " + info.Value.GsDemoInfo.Header.GameDir + "\n");
                                 datanode.Nodes.Add(new TreeNode("Version info")
                                 {
