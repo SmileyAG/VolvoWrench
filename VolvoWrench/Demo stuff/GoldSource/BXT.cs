@@ -29,6 +29,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			EDICTS,
 			PLAYERHEALTH,
 			SPLIT_MARKER,
+			FLAGS,
 		}
 
 		[Serializable]
@@ -211,7 +212,18 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			}
 		}
 
-		public abstract class BXTData
+		[Serializable]
+		public class Flags : BXTData
+		{
+			public int flags;
+
+			public override void Read(BinaryReader br)
+			{
+				flags = br.ReadInt32();
+			}
+		}
+
+        public abstract class BXTData
 		{
 			/// <summary>
 			/// Read the data.
