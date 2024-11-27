@@ -29,6 +29,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			EDICTS,
 			PLAYERHEALTH,
 			SPLIT_MARKER,
+			FLAGS,
 		}
 
 		[Serializable]
@@ -208,6 +209,17 @@ namespace VolvoWrench.Demo_stuff.GoldSource
                 corner_max = new Point3D(br.ReadSingle(), br.ReadSingle(), br.ReadSingle());
                 name = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
                 map_name = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+            }
+        }
+
+        [Serializable]
+        public class Flags : BXTData
+        {
+            public int flags;
+
+            public override void Read(BinaryReader br)
+            {
+                flags = br.ReadInt32();
             }
         }
 

@@ -162,7 +162,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
         public string ParseBxtData(KeyValuePair<string, CrossParseResult> info)
         {
             string ret = "\n";
-            const string bxtVersion = "abf3d6c50f7b3dfcf972c57fba555278fdc1653a-CLEAN based on jul-23-2023";
+            const string bxtVersion = "cbc496b1ba7f6c242a961c33f16d3b5741371dd6-CLEAN based on nov-11-2024";
             var cvarRules = new Dictionary<string, string>()
             {
                 {"_BXT_BUNNYSPLIT_TIME_UPDATE_FREQUENCY", "41"},
@@ -197,6 +197,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_HUD_ARMOR", "0"},
                 {"BXT_HUD_GONARCH", "0"},
                 {"BXT_HUD_QUICKGAUSS", "0"},
+                {"BXT_HUD_CHECKPOINT", "0"},
                 {"BXT_HUD_DISTANCE", "0"},
                 {"BXT_HUD_ENTITIES", "0"},
                 {"BXT_HUD_ENTITY_HP", "0"},
@@ -213,6 +214,8 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_HUD_VISIBLE_LANDMARKS", "0"},
                 {"BXT_HUD_WATERLEVEL", "0" },
                 {"BXT_INTERPROCESS_ENABLE", "0"},
+                {"BXT_LIGHTSTYLE", "0" },
+                {"BXT_LIGHTSTYLE_CUSTOM", ""},
                 {"BXT_NOVIS", "0"},
                 {"BXT_REMOVE_FPS_LIMIT", "0" },
                 {"BXT_RENDER_FAR_ENTITIES", "0" },
@@ -227,6 +230,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"BXT_SHOW_HIDDEN_ENTITIES_CLIENTSIDE", "0"},
                 {"BXT_SHOW_ONLY_PLAYERS", "0"},
                 {"BXT_SHOW_PLAYER_IN_HLTV", "0"},
+                {"BXT_SKYBOX_NAME", ""},
                 {"BXT_SKYBOX_REMOVE", "0"},
                 {"BXT_SHOW_NODES", "0"},
                 {"BXT_SHOW_PICKUP_BBOX", "0"},
@@ -267,6 +271,8 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"CHASE_UP", "16"},
                 {"CL_ANGLESPEEDKEY", "0.67"},
                 {"CL_BACKSPEED", "400"},
+                {"CL_BHOP_MODE", "ほぼ"},
+                {"CL_RULER_ENABLE", "ほぼ"},
                 {"CL_CLOCKRESET", "0.1"},
                 {"CL_CMDBACKUP", "2"},
                 {"CL_FIXTIMERATE", "7.5"},
@@ -327,7 +333,6 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"GL_PICMIP", "0"},
                 {"GL_PLAYERMIP", "0"},
                 {"GL_REPORTTJUNCTIONS", "0"},
-                {"GL_ROUND_DOWN", "3"},
                 {"GL_WIREFRAME", "0"},
                 {"GL_ZTRICK", "0"},
                 {"HOST_FRAMERATE", "0"},
@@ -666,6 +671,8 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                 {"SV_ACCELERATE", "10"},
                 {"SV_AIRACCELERATE", "10"},
                 {"SV_AIRMOVE", "1"},
+                {"SV_AUTORECORD", "県"},
+                {"SV_EXPLOSION_DISPLAY", "県"},
                 {"SV_BOUNCE", "1"},
                 {"SV_CHEATS", "0"},
                 {"SV_CLIENTTRACE", "1"},
@@ -736,7 +743,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                     {
                         case Bxt.RuntimeDataType.VERSION_INFO:
                             {
-                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (July 23rd 2023)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
+                                ret +=("\t" + "BXT Version: " + ((((Bxt.VersionInfo)t.Value).bxt_version == bxtVersion) ? "Latest (November 11th 2024)" : ("INVALID=" + ((Bxt.VersionInfo)t.Value).bxt_version)) + "\n");
                                 ret += ("\t" + "Game Version: " + ((Bxt.VersionInfo)t.Value).build_number + ", Game Directory: " + info.Value.GsDemoInfo.Header.GameDir + "\n");
                                 datanode.Nodes.Add(new TreeNode("Version info")
                                 {
@@ -769,7 +776,7 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                             {
                                 if (i+1 == info.Value.GsDemoInfo.IncludedBXtData.Count)
                                 {
-                                    ret +=("\t" + "Demo bxt time: " + ((Bxt.Time)t.Value).ToString() + " Frame: " + i + "\n");
+                                    ret +=("\t" + "Demo bxt time: " + ((Bxt.Time)t.Value).ToString() + " — Frame: " + i + "\n");
                                 }
                                 datanode.Nodes.Add(new TreeNode("Time: " + ((Bxt.Time)t.Value).ToString())
                                 {
@@ -779,11 +786,12 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                             }
                         case Bxt.RuntimeDataType.BOUND_COMMAND:
                             {
-                                if (((Bxt.BoundCommand) t.Value).command.ToUpper().Contains(";"))
+                                string command = ((Bxt.BoundCommand)t.Value).command.Trim();
+                                if (command.ToUpper().Contains(";"))
                                 {
-                                    ret +=("\t" + "Possible script: " + ((Bxt.BoundCommand)t.Value).command + " Frame: " + i + "\n");
+                                    ret +=("\t" + "Possible script: " + command + " — Frame: " + i + "\n");
                                 }
-                                datanode.Nodes.Add(new TreeNode("Bound command: " + ((Bxt.BoundCommand)t.Value).command)
+                                datanode.Nodes.Add(new TreeNode("Bound command: " + command)
                                 {
                                     ForeColor = Color.LightSalmon
                                 });
@@ -791,20 +799,21 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                             }
                         case Bxt.RuntimeDataType.ALIAS_EXPANSION:
                             {
-                                if ((((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+LEFT"))
-                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+RIGHT"))
-                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+MOVE"))
-                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+FORWARD"))
-                                 | (((Bxt.AliasExpansion)t.Value).command.ToUpper().ToUpper().Contains("+BACK")))
+                                string aliasCommand = ((Bxt.AliasExpansion)t.Value).command.Trim();
+                                if (aliasCommand.ToUpper().Contains("+LEFT")
+                                    || aliasCommand.ToUpper().Contains("+RIGHT")
+                                    || aliasCommand.ToUpper().Contains("+MOVE")
+                                    || aliasCommand.ToUpper().Contains("+FORWARD")
+                                    || aliasCommand.ToUpper().Contains("+BACK"))
                                 {
-                                    ret +=("\t" + "Movement command in alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + ((Bxt.AliasExpansion)t.Value).command + " Frame: " + i + "\n");
+                                    ret +=("\t" + "Movement command in alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + aliasCommand + " — Frame: " + i + "\n");
                                 }
-                                datanode.Nodes.Add(new TreeNode("Alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + ((Bxt.AliasExpansion)t.Value).command) { ForeColor = Color.LightCyan });
+                                datanode.Nodes.Add(new TreeNode("Alias [" + ((Bxt.AliasExpansion)t.Value).name + "]: " + aliasCommand) { ForeColor = Color.LightCyan });
                                 break;
                             }
                         case Bxt.RuntimeDataType.SCRIPT_EXECUTION:
                             {
-                                ret +=("\t" + "Config execution: " + ((Bxt.ScriptExecution)t.Value).filename + " Frame: " + i + "\n");
+                                ret +=("\t" + "Config execution: " + ((Bxt.ScriptExecution)t.Value).filename + " — Frame: " + i + "\n");
                                 //Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\");
                                 //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\" + ((Bxt.ScriptExecution)t.Value).filename, ((Bxt.ScriptExecution)t.Value).contents);
                                 datanode.Nodes.Add(new TreeNode("Script: " + ((Bxt.ScriptExecution)t.Value).filename)
@@ -819,73 +828,98 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                             }
                         case Bxt.RuntimeDataType.COMMAND_EXECUTION:
                             {
-                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("BXT"))
-                                ^ ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("APPEND"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_TIMER"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_COLOR"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_JUMPSPEED"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_SPEEDOMETER"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_VIEWANGLES"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_INCORRECT_FPS"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_GAME"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_NIGHTVISION_SPRITE"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_AUTOSAVE"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DUCKTAP"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AUTOJUMP"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JUMPBUG"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CROSS"))
-                                | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("BXT_VIEWMODEL"))))
+                                // this is horrendously bad.. HOLY! what was i thinking when writing this code?
+                                // this will match random commands if lhs is false and rhs is true, e.g.
+                                // r_drawviewmodel, crosshair etc.
+                                //if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("BXT"))
+                                //^ ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("APPEND"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_TIMER"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_COLOR"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_JUMPSPEED"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_SPEEDOMETER"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_VIEWANGLES"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_INCORRECT_FPS"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HUD_GAME"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_NIGHTVISION_SPRITE"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DISABLE_AUTOSAVE"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DUCKTAP"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AUTOJUMP"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JUMPBUG"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CROSS"))
+                                //| (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("VIEWMODEL"))))
+                                //{
+                                //    ret +=("\t" + "Disallowed bxt command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
+                                //}
+
+                                string command = ((Bxt.CommandExecution)t.Value).command.Trim();
+
+                                if (command.ToUpper().Contains("BXT")
+                                    && !(command.ToUpper().Contains("_APPEND")
+                                    || command.ToUpper().Contains("_HUD_TIMER")
+                                    || command.ToUpper().Contains("_HUD_COLOR")
+                                    || command.ToUpper().Contains("_HUD_JUMPSPEED")
+                                    || command.ToUpper().Contains("_HUD_SPEEDOMETER")
+                                    || command.ToUpper().Contains("_HUD_VIEWANGLES")
+                                    || command.ToUpper().Contains("_HUD_INCORRECT_FPS")
+                                    || command.ToUpper().Contains("_HUD_GAME")
+                                    || command.ToUpper().Contains("_DISABLE_NIGHTVISION_SPRITE")
+                                    || command.ToUpper().Contains("_DISABLE_AUTOSAVE")
+                                    || command.ToUpper().Contains("_DUCKTAP")
+                                    || command.ToUpper().Contains("_AUTOJUMP")
+                                    || command.ToUpper().Contains("_JUMPBUG")
+                                    || command.ToUpper().Contains("_CROSS")
+                                    || command.ToUpper().Contains("_VIEWMODEL")))
                                 {
-                                    ret +=("\t" + "Disallowed bxt command: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
+                                    ret += ("\t" + "Disallowed bxt command: " + command + " — Frame: " + i + "\n");
                                 }
-                                datanode.Nodes.Add(new TreeNode("Command: " + ((Bxt.CommandExecution)t.Value).command)
+                                datanode.Nodes.Add(new TreeNode("Command: " + command)
                                 {
                                     ForeColor = Color.LightGreen
                                 });
-                                if (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("LOAD"))
+                                if (command.ToUpper().StartsWith("LOAD"))
                                 {
-                                    ret += ("\t" + ((Bxt.CommandExecution)t.Value).command + "\n");
+                                    ret += ("\t" + command + "\n");
                                 }
-                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("HOST_"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SK_"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CHASE"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SKILL"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CONNECT"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("DELTA"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("EDGEFRICTION"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("FS_"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("MAPCHANGECFGFILE"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("NOTARGET"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PLAYDEMO"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("S_SHOW"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SPEC_POS"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("THIRDPERSON"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SCR_"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("C_"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CAM"))
-                                  | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("JOY")))
+                                if (command.ToUpper().Contains("HOST_")
+                                  || command.ToUpper().Contains("SK_")
+                                  || command.ToUpper().Contains("CHASE")
+                                  || command.ToUpper().Contains("SKILL")
+                                  || command.ToUpper().Contains("CONNECT")
+                                  || command.ToUpper().Contains("DELTA")
+                                  || command.ToUpper().Contains("EDGEFRICTION")
+                                  || command.ToUpper().Contains("FS_")
+                                  || command.ToUpper().Contains("MAPCHANGECFGFILE")
+                                  || command.ToUpper().Contains("NOTARGET")
+                                  || command.ToUpper().Contains("PLAYDEMO")
+                                  || command.ToUpper().Contains("S_SHOW")
+                                  || command.ToUpper().Contains("SPEC_POS")
+                                  || command.ToUpper().Contains("THIRDPERSON")
+                                  || command.ToUpper().Contains("SCR_")
+                                  || command.ToUpper().StartsWith("C_")
+                                  || command.ToUpper().Contains("CAM")
+                                  || command.ToUpper().Contains("JOY"))
                                 {
-                                    ret += ("\t" + "Disallowed: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
+                                    ret += ("\t" + "Disallowed: " + command + " — Frame: " + i + "\n");
                                 }
-                                if ((((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SV_")
-                                   ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("AIM"))
+                                if ((command.ToUpper().Contains("SV_")
+                                   && !command.ToUpper().Contains("AIM"))
 
-                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("CL_")
-                                   ^ (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("BOB")
-                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("SHOWFPS")
-                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("RIGHTHAND")
-                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PITCHDOWN")
-                                   | ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("PITCHUP")))
+                                   || (command.ToUpper().Contains("CL_")
+                                   && !(command.ToUpper().Contains("BOB")
+                                   || command.ToUpper().Contains("SHOWFPS")
+                                   || command.ToUpper().Contains("RIGHTHAND")
+                                   || command.ToUpper().Contains("PITCHDOWN")
+                                   || command.ToUpper().Contains("PITCHUP")))
 
-                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("MP_"))
-                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("R_"))
+                                   || (command.ToUpper().StartsWith("MP_"))
+                                   || (command.ToUpper().StartsWith("R_"))
 
-                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("GL_")
-                                   ^ ((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().Contains("TEXTUREMODE"))
+                                   || (command.ToUpper().Contains("GL_")
+                                   && !command.ToUpper().Contains("TEXTUREMODE"))
 
-                                   | (((Bxt.CommandExecution)t.Value).command.ToUpper().ToUpper().StartsWith("STAT")))
+                                   || (command.ToUpper().StartsWith("STAT")))
                                 {
-                                    ret += ("\t" + "Probably disallowed ¯\\_(ツ)_/¯: " + ((Bxt.CommandExecution)t.Value).command + " Frame: " + i + "\n");
+                                    ret += ("\t" + "Probably disallowed ¯\\_(ツ)_/¯: " + command + " — Frame: " + i + "\n");
                                 }
                                 break;
                             }
@@ -916,8 +950,9 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                         case Bxt.RuntimeDataType.EDICTS:
                             {
                                 if (((Bxt.Edicts)t.Value).edicts > 900)
+                                {
                                     ret += ("\t" + "Max edicts value is higher than 900: " + ((Bxt.Edicts)t.Value).edicts + "\n");
-
+                                }
                                 datanode.Nodes.Add(new TreeNode("Max edicts: " + ((Bxt.Edicts)t.Value).edicts) { ForeColor = Color.Violet });
                                 break;
                             }
@@ -935,6 +970,17 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                                     ForeColor = Color.Orange,
                                     Nodes = { new TreeNode("Name: " + split.name + " | Map name: " + split.map_name) { ForeColor = Color.Orange } }
                                 });
+                                break;
+                            }
+                        case Bxt.RuntimeDataType.FLAGS:
+                            {
+                                int bxtFlags = ((Bxt.Flags)t.Value).flags;
+                                bool bigMap = (bxtFlags & 1) != 0;
+                                if (bigMap)
+                                {
+                                    ret += ("\tThis runner has used bxt_enable_big_map and didn't restart the game before the run. This command is not intended for RTA leaderboard runs.\n");
+                                }
+                                datanode.Nodes.Add(new TreeNode("BXT Flags: " + bxtFlags) { ForeColor = Color.LightSalmon });
                                 break;
                             }
                         default:
