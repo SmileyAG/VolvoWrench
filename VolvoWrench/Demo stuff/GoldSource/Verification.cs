@@ -813,9 +813,25 @@ Human readable time:        {TimeSpan.FromSeconds(Df.Sum(x => x.Value.GsDemoInfo
                             }
                         case Bxt.RuntimeDataType.SCRIPT_EXECUTION:
                             {
-                                ret +=("\t" + "Config execution: " + ((Bxt.ScriptExecution)t.Value).filename + " — Frame: " + i + "\n");
+                                // NOTE: When there is already enough data in a console command buffer and a config gets executed
+                                // (for example, a config inside a config), if the combined size becomes more than 16 kb of data (cmd_text.maxsize),
+                                // that 2nd config will get skipped and stuffed to the end, thus breaking the order of execution.
+                                // case in point -- https://www.speedrun.com/hl1/runs/zqd4kv5m
+
+                                ret += ("\t" + "Config execution: " + ((Bxt.ScriptExecution)t.Value).filename + " — Frame: " + i + "\n");
+
+                                // TODO: If someone has their scripts in a sub directory and half-life's cmd_exec_f() gets called
+                                // with e.g. "exec scripts/gauss.cfg", File.WriteAllText() will throw an IO exception.
+
                                 //Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\");
-                                //File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\" + ((Bxt.ScriptExecution)t.Value).filename, ((Bxt.ScriptExecution)t.Value).contents);
+                                //if (((Bxt.ScriptExecution)t.Value).filename == "")
+                                //{
+                                //    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\" + "broken_settings.cfg", ((Bxt.ScriptExecution)t.Value).contents);
+                                //}
+                                //else
+                                //{
+                                //    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\verification cfgs\\" + ((Bxt.ScriptExecution)t.Value).filename, ((Bxt.ScriptExecution)t.Value).contents);
+                                //}
                                 datanode.Nodes.Add(new TreeNode("Script: " + ((Bxt.ScriptExecution)t.Value).filename)
                                 {
                                     ForeColor = Color.LightSteelBlue,
