@@ -42,8 +42,8 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 			public override void Read(BinaryReader br)
 			{
 				build_number = br.ReadInt32();
-				bxt_version = new string(br.ReadChars(br.ReadInt32()));
-			}
+				bxt_version = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+            }
 		}
 
 		[Serializable]
@@ -127,7 +127,7 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 				var count = br.ReadUInt32();
 				for (int  i= 0; i < count; i++)
 				{
-					filenames.Add(new string(br.ReadChars(br.ReadInt32())));
+					filenames.Add(Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32())));
 				}
 			}
 		}
@@ -164,11 +164,10 @@ namespace VolvoWrench.Demo_stuff.GoldSource
 				var cvarnum = br.ReadUInt32();
 				for (var i = 0; i < cvarnum; i++)
 				{
-					var fsl = br.ReadInt32();
-					var fs = new string(br.ReadChars(fsl));
-					var ssl = br.ReadInt32();
-					var ss = new string(br.ReadChars(ssl));
-					CVars.Add(new KeyValuePair<string, string>(fs,ss));
+					var firstString = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+                    var secondString = Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+
+                    CVars.Add(new KeyValuePair<string, string>(firstString,secondString));
 				}
 			}
 		}
